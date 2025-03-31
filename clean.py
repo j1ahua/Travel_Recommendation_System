@@ -1,5 +1,4 @@
 import pandas as pd
-import wikipedia
 import csv
 
 # Load your CSV
@@ -13,3 +12,6 @@ df["Description"] = df["Description"].apply(lambda x: x if isinstance(x, str) el
 # Save it back
 df.to_csv("data/destinations.csv", index=False, encoding="utf-8", quoting=csv.QUOTE_ALL, quotechar='"')
 print("All missing or empty descriptions filled with 'Description not found.'")
+
+dups = df.duplicated()
+print(dups)
