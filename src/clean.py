@@ -23,6 +23,9 @@ def parse_tourist_count(value) -> float:
 
     Returns None if conversion fails.
     """
+    if isinstance(value, (int, float)):
+        return value
+    
     if pd.isna(value):
         return None
 
@@ -65,6 +68,8 @@ def clean_approx_annual_tourists(df: pd.DataFrame) -> pd.DataFrame:
     column_name = "Approximate Annual Tourists"
     if column_name in df.columns:
         df[column_name] = df[column_name].apply(parse_tourist_count)
+
+    df.rename(columns={column_name: 'Approximate Annual Tourists(million)'},inplace = True)
     return df
 
 def check_duplicates(df: pd.DataFrame):
