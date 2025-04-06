@@ -69,7 +69,7 @@ def clean_approx_annual_tourists(df: pd.DataFrame) -> pd.DataFrame:
     if column_name in df.columns:
         df[column_name] = df[column_name].apply(parse_tourist_count)
 
-    df.rename(columns={column_name: 'Approximate Annual Tourists(million)'},inplace = True)
+    df.rename(columns={column_name: 'Approximate Annual Tourists(million)'},inplace = False)
     return df
 
 def check_duplicates(df: pd.DataFrame):
